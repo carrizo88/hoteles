@@ -1,8 +1,8 @@
 /**
- * Android App
+ * Contenedor Principal de todos los elementos de la Aplicacion
+ * Tanto Ios como Android
  */
 
-//import React, { Component } from 'react';
 import React, { Component } from 'react';
 import { Router, Scene } from 'react-native-router-flux';
 import {} from 'react-native';
