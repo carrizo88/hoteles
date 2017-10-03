@@ -8,10 +8,12 @@ import {
   StyleSheet,
   Text,
   View,
+  TouchableOpacity,
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MealPlanPicker from './MealPlanPicker/MealPlanPicker';
+import MPP from './MealPlanPicker/MPP';
 
 class HotelHabitaciones extends Component {
 
@@ -36,12 +38,9 @@ handler(e) {
          this.setState({ mostrarlista: !this.state.mostrarlista });
        }
   render() {
-        const lista = [
-           { id: 1, icon: 'hotel', label: 'Solo la habitacion' },
-           { id: 2, icon: 'free-breakfast', label: 'Desayuno' },
-           { id: 3, icon: 'room-service', label: 'Servicio al Cuarto' },
-           { id: 4, icon: 'child-care', label: 'Habitacion con niños' },
-      ];
+        const rederlista = this.state.mostrarlista ?
+              <MPP handler={this.handler} /> :
+              <MealPlanPicker icon='bed' label='Solo la habitacion' />;
     return (
       <View style={styles.HotelHabitacionesCard}>
             <View style={styles.habitaciones1}>
@@ -80,8 +79,9 @@ handler(e) {
                         </View>
                   </View>
             </View>
-
-                  <MealPlanPicker lista={lista} selectedId={1} />
+            <TouchableOpacity onPress={this.handlePress}>
+                           {rederlista}
+            </TouchableOpacity>
             <View style={styles.habitacionesCaracteristicas}>
                   <View style={styles.habitaciones2}>
                         <Text style={styles.precioHabitacion}>Precio por noche habitacion</Text>
